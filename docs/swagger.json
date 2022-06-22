@@ -114,7 +114,7 @@
               "properties": {
                 "message": {
                   "type": "string",
-                  "example": "Failed to cretae new article"
+                  "example": "Failed to create new article"
                 }
               }
             }
@@ -161,6 +161,102 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Article not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Article"
+        ],
+        "summary": "Edit article by ID",
+        "description": "Update an existing article",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "articleId",
+            "description": "ID of article to be updated",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Article object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Lorem Ipsum"
+                },
+                "body": {
+                  "type": "string",
+                  "example": "Dolor sit amet"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully update article by ID",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Lorem Ipsum"
+                },
+                "body": {
+                  "type": "string",
+                  "example": "Dolor sit amet"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Article not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Article"
+        ],
+        "summary": "Delete article by ID",
+        "description": "Delete an existing article",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "articleId",
+            "description": "ID of article to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully delete article by ID"
           },
           "400": {
             "description": "Invalid ID supplied"
